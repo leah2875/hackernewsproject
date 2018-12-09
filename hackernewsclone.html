@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+     <meta charset="utf-8">
+    <link rel ="stylesheet" type ="text/css" href ="style.css">
+  <title>Hacker News</title>
+   </head>
+    <body>
+    <center>
+    <table id ="tblemain" border="0" cellpadding="0" cellspacing="0" width="85%" bgcolor="#f6f6ef">
+        <tbody>
+          <tr>
+            <td bgcolor="ff6600">
+              <table border="0" cellpadding="0" cellspacing="0" width="100%" style="padding:2px>
+              <tbody>
+              <tr>
+              <td style="width:18px;padding-right:4px">
+                <img src="y18.gif" width="18" height="18" style="border:1px white solid;"></a>
+              </td>
+          <td style="line-height:12pt; height:10px;">
+            <span class="pagetop">
+              <b class="hnname">
+                Hacker News</b>
+                 |
+              New
+               |
+              Threads
+               |
+              Comments
+               |
+              Show
+               |
+              Ask
+               |
+              Jobs
+               |
+              Submit
+            </span>
+          </td>
+          <td style="text-align:right;padding-right;4px;">
+            <span class="pagetop">login</a>
+            </span>
+          </td>
+          </tr>
+        </tbody>
+    </table>
+  </td>
+</tr>
+<tr style="height:10px"></tr>
+<tr>
+  <td>
+    <table border="0" cellpadding="0" cellspacing="0" class"itemList>
+      <tbody>
+        <script>
+        let url = "https://newsapi.org/v2/top-headlines?sources=hacker-news&apiKey=62fe56f52e4b445ba16d792434056167";
+
+    fetch(url)
+      .then(r => {
+        return r.json();
+      })
+      .then(data => {
+        let articles = data.articles;
+        let newsStory = document.createElement("ul");
+        let body = document.querySelector("body");
+        body.appendChild(newsStory);
+        articles.map(story => {
+
+          let newsItem = document.createElement("li");
+          newsItem.innerHTML =
+            '<a href="' + story.href + '">' + story.title + "</a>";
+          newsStory.appendChild(newsItem);
+        });
+      })
+      .catch(e => {
+        console.log(`An error occurred: ${e}`);
+      });
+    </script>
+      </tbody>
+    </table>
+  </td>
+</tr>
+<tr>
+  <td>
+    <table width="100%" cellspacing="0" cellpadding="1">
+      <tbody>
+        <tr>
+          <td bgcolor="#ff6600"></td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <center>
+      <span class="yclinks">
+        Guidelines
+        |
+        FAQ
+        |
+        Support
+        |
+        API
+        |
+        Security
+        |
+        Lists
+        |
+        Bookmarklet
+        |
+        Legal
+        |
+        Apply to YC
+        |
+        Contact
+      </span>
+    </center>
+  </body>
+</html>
